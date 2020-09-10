@@ -74,13 +74,13 @@ int main() {
   int i;
   int NUM_STRINGS = 7;
   // Makes an array of 7 string constants for testing.
-  char* strings[] = {  "Morris", 
-		       "  stuff", 
-		       "Minnesota", 
-		       "nonsense  ", 
-		       "USA", 
+  char* strings[] = {  "Tyler", 
+		       "  loves", 
+		       "Computer", 
+		       "Science  ", 
+		       "at", 
 		       "   ", 
-		       "     silliness    "
+		       "     UMM    "
   };
 
   for (i=0; i<NUM_STRINGS; ++i) {
