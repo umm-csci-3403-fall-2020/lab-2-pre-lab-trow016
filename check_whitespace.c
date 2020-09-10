@@ -2,11 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-/*
- * Strips spaces from both the front and back of a string,
- * leaving any internal spaces alone.
- */
-char* strip(char* str) {
+char* strip (char* str){ 
   int size;
   int num_spaces;
   int first_non_space, last_non_space, i;
@@ -39,14 +35,18 @@ char* strip(char* str) {
   // Allocate a slot for all the "saved" characters
   // plus one extra for the null terminator.
   result = calloc(size-num_spaces+1, sizeof(char));
+
   // Copy in the "saved" characters.
   for (i=first_non_space; i<=last_non_space; ++i) {
     result[i-first_non_space] = str[i];
+    
   }
   // Place the null terminator at the end of the result string.
   result[i-first_non_space] = '\0';
 
-  return result;
+  free(result);
+  
+    return result;
 }
 
 /*
@@ -68,6 +68,10 @@ int is_clean(char* str) {
   result = strcmp(str, cleaned);
 
   return result == 0;
+  
+
+
+  
 }
 
 int main() {
@@ -90,6 +94,7 @@ int main() {
       printf("The string '%s' is NOT clean.\n", strings[i]);
     }
   }
-
+  
+  
   return 0;
 }
