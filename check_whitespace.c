@@ -2,7 +2,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-char* strip (char* str){ 
+
+ 
+char* strip(char* str) {
+  // Strips spaces from both the front and back of a string,
+// leaving any internal spaces alone.
   int size;
   int num_spaces;
   int first_non_space, last_non_space, i;
@@ -35,18 +39,14 @@ char* strip (char* str){
   // Allocate a slot for all the "saved" characters
   // plus one extra for the null terminator.
   result = calloc(size-num_spaces+1, sizeof(char));
-
   // Copy in the "saved" characters.
   for (i=first_non_space; i<=last_non_space; ++i) {
     result[i-first_non_space] = str[i];
-    
   }
   // Place the null terminator at the end of the result string.
   result[i-first_non_space] = '\0';
 
-  free(result);
-  
-    return result;
+  return result;
 }
 
 /*
@@ -67,24 +67,26 @@ int is_clean(char* str) {
   // greater than the second.
   result = strcmp(str, cleaned);
 
-  return result == 0;
+  if(strcmp("",cleaned)){
+    return result == 0;
+  }
+    free(cleaned);
+    return result == 0;
   
 
-
-  
 }
 
 int main() {
   int i;
   int NUM_STRINGS = 7;
   // Makes an array of 7 string constants for testing.
-  char* strings[] = {  "Tyler", 
-		       "  loves", 
-		       "Computer", 
-		       "Science  ", 
-		       "at", 
+  char* strings[] = {  "Morris", 
+		       "  stuff", 
+		       "Minnesota", 
+		       "nonsense  ", 
+		       "USA", 
 		       "   ", 
-		       "     UMM    "
+		       "     silliness    "
   };
 
   for (i=0; i<NUM_STRINGS; ++i) {
@@ -94,7 +96,6 @@ int main() {
       printf("The string '%s' is NOT clean.\n", strings[i]);
     }
   }
-  
-  
+
   return 0;
 }
